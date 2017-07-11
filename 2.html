@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<title>同城交友</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style type="text/css">
+.xb{border:1px;width:50px;height:50px;background-color:aqua;}
+.ifdiv{border:1px;width:200px;height:200px;background-color:aqua;}
+.a{font-size: 25px;}
+</style>
+</head>
+
+<body rlt="1" style="padding:0;margin:0;">
+<p class="a">同城交友</p>
+<div class="xb" onclick="test2click()" style=""></div>
+<div style="overflow-y: auto;" class="ifdiv"><iframe id="ifra" src="#" style="width:100%;" frameborder="0" scrolling="no" ></iframe>
+</div>
+
+
+<script>
+window.onload=function(){
+	document.getElementById("coverlay").style.height=document.getElementById("ifdiv").scrollHeight+"px";
+}
+history.pushState(history.length+1 , "message", "#" + new Date().getTime());
+window.onhashchange = function(){
+	window.location.href = "3.html"
+};
+</script>
+
+</body>
+</html>
