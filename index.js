@@ -22,12 +22,12 @@ function main()
     canvasEl.height=canvasEl.clientHeight;
  }
  
- window.onmousemove=function (e) {
+ window.touchmove=function (e) {
    //鼠标移动事件
    mousePos[0]=e.clientX;
    mousePos[1]=e.clientY;
  }
- window.onmouseover=function (e) {
+ window.touchstart=function (e) {
    //鼠标点击事件
    var maxi=3*Math.floor(Math.random()*10+10);
    for(var i=0;i<maxi;i++)
