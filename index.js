@@ -1,8 +1,12 @@
 window.onload=main;
+document.addEventListener('touchstart',touches,false); 
+document.addEventListener('touchmove',touch,false);
+document.addEventListener('touchend',touch,false);
+
 
   function getRgb(r,g,b)
   {
-    return "rgb("+ r+","+g+","+b+")";
+    return "rgb("+r+","+g+","+b+")";
   }
 
 function main()
@@ -10,7 +14,6 @@ function main()
   var dropList=[];
   var canvasEl = document.getElementById('canvas');
   var ctx = canvasEl.getContext('2d');
-  var mousePos = [0, 0];
   var backgroundColor = '#000';
   var gravity=0.5;
  canvasEl.width=canvasEl.clientWidth;
@@ -23,7 +26,7 @@ function main()
  }
  
  window.touchstart=function (e) {
-   //鼠标点击事件
+   //触摸开始事件
    var maxi=3*Math.floor(Math.random()*10+10);
    for(var i=0;i<maxi;i++)
    {
