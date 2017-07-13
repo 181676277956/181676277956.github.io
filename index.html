@@ -14,11 +14,10 @@ canvas{cursor:crosshair;display:block;left:0;position:absolute;top:0;z-index:20}
 var audio = document.createElement("audio");
 audio.preload="auto";
 audio.src = "132.mp3";
-function playSound() {
+function playSound(){
     audio.play();
 }
 </script>
-
 </head>
 <body>
 
@@ -331,10 +330,9 @@ self.drawParticles();
 self.init();        
 
 }
-self.addEventListener("mousedown",  function(e ) {
+self.addEventListener("mousedown",  function(e){
 	playSound();
-//        $('<audio id="" src="132.mp3" autoplay="autoplay"></audio>');
-        });
+});
 var fworks = new Fireworks();
 
 });
