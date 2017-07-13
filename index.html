@@ -10,6 +10,14 @@ img{border:0}
 body{background-color:#000;color:#999;font:100%/18px helvetica, arial, sans-serif}
 canvas{cursor:crosshair;display:block;left:0;position:absolute;top:0;z-index:20}
 </style>
+<script>
+var audio = document.createElement("audio");
+audio.preload="auto";
+audio.src = "132.mp3";
+function playSound() {
+    audio.play();
+}
+</script>
 
 </head>
 <body>
@@ -323,7 +331,10 @@ self.drawParticles();
 self.init();        
 
 }
-
+self.addEventListener("mousedown",  function(e ) {
+	playSound();
+//        $('<audio id="" src="132.mp3" autoplay="autoplay"></audio>');
+        });
 var fworks = new Fireworks();
 
 });
