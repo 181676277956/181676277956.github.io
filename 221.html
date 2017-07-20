@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏代练</title>
+
+<style>
+	#a,#b,#c{
+		width:90%;
+		height:45%;
+		background-color:gray;    
+		margin: auto;
+		position: absolute;
+		z-index:3;
+/*		top: 0;*/
+		bottom: 10%;
+		left: 4%;
+		right: 4%;
+		display:none;
+		border-radius: 10px;
+	}
+	
+	button{
+		color: white;
+		background-color: transparent;
+		border:0;
+	}
+	input{
+		background-color: transparent;
+		border: 0;
+	}
+	p{
+		color:white;
+	}
+	html{
+		background-color:black;
+		font-size: 11px;
+	}
+	body{
+		margin-left: 0px;
+	    margin-top: 0px;
+	    margin-right: 0px;
+    	margin-bottom: 0px;
+	}
+	div{
+		margin: 0;
+	}
+	.changgui{
+		height: 30px;
+	}
+	.changgui,.yikuai,.erkuai,.yaoqiu{
+		border: solid 1px;
+		border-color: white;
+		margin-top: 3%;
+	}
+
+	.yikuai p{		
+        margin-left: 9%;
+		margin-top: 0.7%;
+		margin-bottom: 0.7%;
+	}
+	.yikuai button{
+		float:right;
+		display: inline;
+		height: auto;
+	}
+	
+	.erkuai p{
+		margin-left: 9%;
+		margin-bottom: 0.7%;
+		margin-top: 0.7%;
+	}
+	.erkuai input{
+		float:right; 
+		display: inline;
+	}
+	
+	
+	.yaoqiu{
+		width:100%;
+		height:80px;
+	}
+	.yaoqiu p{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.yaoqiu input{
+		width: 100%;
+		height: auto;
+	}
+	
+	
+	.foot{
+		margin-top: 12%;
+	}
+	.foot div{
+		float: left;
+		border: 0;
+		width: 50%;
+	}
+	.foot div img{
+		width:100%;
+		height:100%;
+	}
+	option,select{
+		font-size:30px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+<div style="width:100%;height:100%">
+	<div class="dailian" style="width:100% ">
+		<button style="float:left"><</button>
+		<p style="margin-left:45%;font-size: 20px;">游戏代练</p>
+	</div>
+	<div class="changgui"><p style="margin:0;text-align:center;font-size: 20px;">常规发布</p></div>
+
+
+
+	<div class="yikuai">
+		<p>游戏：</p>
+		<p id="game" style="float:left;color:white;"></p>
+		<button onclick="shield()">></button>
+	</div>
+	<div class="yikuai">
+		<p>系统：</p>
+		<p id="system" style="float:left;color:white;"></p>
+		<button onclick="shield1()">></button>
+	</div>
+	<div class="yikuai">
+		<p>区服：</p>
+		<p id="range" style="float:left;color:white;"></p>
+		<button onclick="shield2()">></button>
+	</div>
+	<div class="yikuai">
+		<p>指定人密码：</p>
+		<p id="people" style="float:left;color:white;"></p>
+		<button>></button>
+	</div>
+
+
+
+
+	<div class="erkuai">
+		<p>订单价格：</p>
+		<input placeholder="必填 收30%的平台服务费30元封顶">
+	</div>
+	<div class="erkuai">
+		<p>代练时间：</p>
+		<input placeholder="必填（单位：小时）">
+	</div>
+	<div class="erkuai">
+		<p>安全保证金：</p>
+		<input placeholder="必填（10-10000封神币之间）">
+	</div>
+	<div class="erkuai">
+		<p>游戏账号：</p>
+		<input placeholder="必填 请输入游戏账号">
+	</div>
+	<div class="erkuai">
+		<p>游戏密码：</p>
+		<input placeholder="必填 请输入游戏密码" type="password">
+	</div>
+	<div class="erkuai">
+		<p>游戏昵称：</p>
+		<input placeholder="必填 请输入游戏昵称">
+	</div>
+
+
+
+	<div class="yaoqiu">
+		<p>代练要求：</p>
+		<input type="text">
+	</div>
+	<div class="foot">
+		<div><img src="3.PNG"></div>
+		<div><img src="4.PNG"></div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="a">
+	<div style="height:30%">
+		<div style="width:35%;height:100%;float:left;margin-left:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" onclick="cancel_shield()">取消</button></div>
+		<div style="width:35%;height:100%;float:right;margin-right:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" id="queding">确定</button></div>
+	</div>
+	<div style="top:40%"><p style="font-size:30px;text-align:center;color:white;">选择游戏</p></div>
+	<div>
+		<select style="margin-left:20%;width:60%;" id="select1">
+			<option value="DOTA2">DOTA2</option>
+			<option value="英雄联盟">英雄联盟</option>
+			<option value="王者荣耀">王者荣耀</option>
+		</select>	
+	</div>
+</div>
+
+<div id="b">
+	<div style="height:30%">
+		<div style="width:35%;height:100%;float:left;margin-left:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" onclick="cancel1()">取消</button></div>
+		<div style="width:35%;height:100%;float:right;margin-right:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" id="queding1">确定</button></div>
+	</div>
+	<div style="top:40%"><p style="font-size:30px;text-align:center;color:white;">选择游戏</p></div>
+	<div>
+		<select style="margin-left:20%;width:60%;" id="select2">
+			<option value="苹果">苹果</option>
+			<option value="安卓">安卓</option>
+		</select>	
+	</div>
+</div>
+
+<div id="c">
+	<div style="height:30%">
+		<div style="width:35%;height:100%;float:left;margin-left:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" onclick="cancel2()">取消</button></div>
+		<div style="width:35%;height:100%;float:right;margin-right:4%;margin-top:5%;"><button style="font-size:30px;width:100%;border-radius:5px;background-color:white;color:black;" id="queding2">确定</button></div>
+	</div>
+	<div style="top:40%"><p style="font-size:30px;text-align:center;color:white;">选择游戏</p></div>
+	<div>
+		<select style="margin-left:20%;width:60%;" id="select3">
+			<option value="默认区">默认区</option>
+			<option value="1区">1区</option>
+			<option value="2区">2区</option>
+		</select>	
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+function shield(){
+    var l = document.getElementById("a");
+    l.style.display = "block";
+}
+function cancel_shield(){
+    var l = document.getElementById("a");
+    l.style.display = "none";
+}
+$("#queding").click(function(){
+    var x = $('#select1 option:selected').text();	
+	$("#game").text(x);
+	var l = document.getElementById("a");
+    l.style.display = "none";
+});
+	
+
+	
+	
+function shield1(){
+    var l = document.getElementById("b");
+    l.style.display = "block";
+}
+function cancel1(){
+    var l = document.getElementById("b");
+    l.style.display = "none";
+}
+$("#queding1").click(function(){
+    var y = $('#select2 option:selected').text();	
+	$("#system").text(y);
+	var l = document.getElementById("b");
+    l.style.display = "none";
+});	
+	
+	
+function shield2(){
+    var l = document.getElementById("c");
+    l.style.display = "block";
+}
+function cancel2(){
+    var l = document.getElementById("c");
+    l.style.display = "none";
+}
+$("#queding2").click(function(){
+    var z = $('#select3 option:selected').text();	
+	$("#range").text(z);
+	var l = document.getElementById("c");
+    l.style.display = "none";
+});	
+</script>
+
+
+</body>
+</html>
